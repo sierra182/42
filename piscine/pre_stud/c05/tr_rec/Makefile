@@ -1,7 +1,7 @@
 CC = /usr/bin/gcc-9
 CFLAGS = -fdiagnostics-color=always -g
 LDFLAGS = 
-OUTPUT = ft_ten_queens_puzzle
+OUTPUT = search_bin
 SOURCES =  $(wildcard *.c)
 OBJECTS = $(SOURCES:.c=.o)
 
