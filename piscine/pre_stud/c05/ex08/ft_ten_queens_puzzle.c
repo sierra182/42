@@ -2,9 +2,14 @@
 #include <stdio.h>
 #define SIZE 10
 
-int     is_valid(int sol[][], int col, int row)
+int     is_valid(int sol[SIZE][SIZE], int col, int row)
 {
-    
+    if ( sol[row - 1][col - 1 == 1 &&
+            sol[row - 2][col - 2 == 0]] ||
+                sol[row + 1][col - 1] == 1 &&
+                    sol[row + 2][col - 2] == 0 )
+                        return (0);
+    else    return (1);
 }
 
 double     ft_qrec(int sol[SIZE][SIZE], int col, int row)
@@ -12,7 +17,7 @@ double     ft_qrec(int sol[SIZE][SIZE], int col, int row)
     int     i;
     double     sols;
     
-    if (is_valid())
+    if (is_valid(sol, col, row))
         if (col++ <= 9)
         {
             i = 0;
