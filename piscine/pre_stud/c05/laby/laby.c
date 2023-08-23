@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+
 #define N 4
 
 bool isValid(int maze[N][N], int x, int y) {
@@ -8,6 +9,8 @@ bool isValid(int maze[N][N], int x, int y) {
 }
 
 bool solveMazeUtil(int maze[N][N], int x, int y, int solution[N][N]) {
+
+    printf("re\n");
     if (x == N - 1 && y == N - 1 && maze[x][y] == 1) {
         solution[x][y] = 1;
         return true;
@@ -15,9 +18,9 @@ bool solveMazeUtil(int maze[N][N], int x, int y, int solution[N][N]) {
 
     if (isValid(maze, x, y)) {
         solution[x][y] = 1;
-        
-        if (solveMazeUtil(maze, x + 1, y, solution)) return true; // Move right
         if (solveMazeUtil(maze, x, y + 1, solution)) return true; // Move down
+        if (solveMazeUtil(maze, x + 1, y, solution)) return true; // Move right
+        
 
         solution[x][y] = 0; // Backtrack if the branch is unsuccessful
         return false;
@@ -26,6 +29,7 @@ bool solveMazeUtil(int maze[N][N], int x, int y, int solution[N][N]) {
 }
 
 bool solveMaze(int maze[N][N]) {
+    
     int solution[N][N] = { {0, 0, 0, 0},
                            {0, 0, 0, 0},
                            {0, 0, 0, 0},
@@ -44,7 +48,7 @@ bool solveMaze(int maze[N][N]) {
 }
 
 int main() {
-    int maze[N][N] = { {1, 0, 0, 0},
+    int maze[N][N] = { {1, 0, 1, 1},
                        {1, 1, 0, 1},
                        {0, 1, 0, 0},
                        {1, 1, 1, 1} };
