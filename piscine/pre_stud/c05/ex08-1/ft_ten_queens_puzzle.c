@@ -4,10 +4,16 @@
 
 int test = 0;
 
+int is_test(int row)
+{
+    if (row == 2)
+        return (0);
+    else return (1);
+}
+
 int     is_diags_valid(int sol[SIZE][SIZE], int col)
 {
-    int     i;
-    int     j;  
+    int     i, j;  
 
     i = -1;
     j = -1;       
@@ -37,8 +43,7 @@ int     is_hor_valid(int sol[SIZE][SIZE], int row, int col)
 
 int     is_all_valid(int sol[SIZE][SIZE], int col)
 {       
-    int     i;
-    int     j;
+    int     i, j;
  
     i = -1;
     j = -1;   
@@ -46,9 +51,9 @@ int     is_all_valid(int sol[SIZE][SIZE], int col)
         if (!is_hor_valid(sol, i, col))
             return (0);  
                  
-    if (!is_diags_valid(sol, col))
-        return (0);
-    return (1);
+  //  if (!is_diags_valid(sol, col))
+  //      return (0);
+  //  return (1);
 }
 
 int stop = 0;
@@ -92,10 +97,7 @@ double     ft_qrec(int sol[SIZE][SIZE], int row, int col)
                     while (++i < SIZE)
                     {
                         while (++j < SIZE)
-                        {
-                            write(1, &(char){sol_cp[i][j] + '0'}, 1);
-                        }
-                       
+                            write(1, &(char){sol_cp[i][j] + '0'}, 1);                      
                         j = -1;
                         write(1, "\n", 1);
                     }
