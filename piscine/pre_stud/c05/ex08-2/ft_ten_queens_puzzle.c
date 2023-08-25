@@ -2,32 +2,31 @@
 #include <stdio.h>
 #define SIZE 10
 
-int is_test(int row)
-{
-    if (row == 2)
-        return (0);
-    else return (1);
-}
-
-int     is_diags_valid(int sol[SIZE][SIZE], int col)
+int     ft_is_diags_valid(int sol[SIZE][SIZE], int col)
 {
     int     i, j;  
+    int     diag;
 
     i = -1;
-    j = -1;       
+    j = -1; 
+    diag = 0;      
     while (++i < SIZE)
     {    
         while (++j <= col)
-            if (sol[i][j] >= 0 && j + 1 <= col &&
-                    (i + 1 < SIZE && sol[i + 1][j + 1] >= 0 ||
-                            i - 1 >= 0 && sol[i - 1][j + 1] >= 0))                        
+        {
+            while (i + ++diag < SIZE || i - diag >= 0 || j + diag <= 0)
+                if (sol[i][j] >= 0 && j + diag <= col &&
+                        (i + diag < SIZE && sol[i + diag][j + diag] >= 0 ||
+                            i - diag >= 0 && sol[i - diag][j + diag] >= 0))                        
                                 return (0);
+            diag = 0;
+        }
         j = -1;
     }            
     return (1);
 }
 
-int     is_hor_valid(int sol[SIZE][SIZE], int row, int col)
+int     ft_is_hor_valid(int sol[SIZE][SIZE], int row, int col)
 {   
     int     n;
 
@@ -39,27 +38,27 @@ int     is_hor_valid(int sol[SIZE][SIZE], int row, int col)
     return (1);
 }
 
-int     is_all_valid(int sol[SIZE][SIZE], int col)
+int     ft_is_all_valid(int sol[SIZE][SIZE], int col)
 {       
     int     i, j;
  
     i = -1;
     j = -1;   
     while (++i < SIZE)       
-        if (!is_hor_valid(sol, i, col)) 
+        if (!ft_is_hor_valid(sol, i, col)) 
             return (0);                   
-    if (!is_diags_valid(sol, col))
+    if (!ft_is_diags_valid(sol, col))
        return (0);
     return (1);
 }
 
-int stop = 0;
-double     ft_qrec(int sol[SIZE][SIZE], int row, int col)
+int     ft_qrec(int sol[SIZE][SIZE], int col)
 {
-    int     i, j;        
+    int     i, j;
+    int     row;        
     int     sol_cp[SIZE][SIZE];
-    double     sols;
-//printf("in: col:%d\n", col);
+    int     sols;
+
     i = -1;
     j = -1;
     while (++i < SIZE)
@@ -68,7 +67,7 @@ double     ft_qrec(int sol[SIZE][SIZE], int row, int col)
             sol_cp[i][j] = sol[i][j];   // use struct
         j = -1;  
     } 
-    if (is_all_valid(sol_cp, ++col - 1))
+    if (ft_is_all_valid(sol_cp, ++col - 1))
         if (col < SIZE)
         {       
             i = 0;
@@ -77,41 +76,35 @@ double     ft_qrec(int sol[SIZE][SIZE], int row, int col)
             while (i++ < SIZE)       
             {            
                 sol_cp[row][col] = row;                
-                sols += ft_qrec(sol_cp, row, col);   
+                sols += ft_qrec(sol_cp, col);   
                 sol_cp[row++][col] = -1;   
             }   
             return (sols);
         }
         else 
-        {
-            if (stop < 257)
+        {            
+            i = -1;
+            j = -1;
+            while (++j < SIZE)
             {
-                i = -1;
-                j = -1;
                 while (++i < SIZE)
-                {
-                    while (++j < SIZE)
+                    if (sol[i][j] != -1)
                         write(1, &(char){sol[i][j] + '0'}, 1);
-                    j = -1;
-                    write(1, "\n", 1);
-                }
-                write(1, "\n", 1); 
-                stop++;
-            }  
+                i = -1;              
+            }
+            write(1, "\n", 1); 
             return (1);
         }
     else return (0);
 }
 
 int     ft_ten_queens_puzzle(void)
-{    
-    write(1, "kikoo\n", 6); 
-    int sol[SIZE][SIZE];
-    int     col, row;
+{       
+    int     col;
     int     i, j;
+    int sol[SIZE][SIZE];
 
     col = -1;
-    row = 0;
     i = -1;
     j = -1;
     while (++i < SIZE)
@@ -120,6 +113,5 @@ int     ft_ten_queens_puzzle(void)
             sol[i][j] = -1;  
         j = -1;    
     }       
-    printf("%f\n", ft_qrec(sol, row, col));
-    write(1, "qikoo\n", 6);
+    printf("%d\n", ft_qrec(sol, col)); 
 }
