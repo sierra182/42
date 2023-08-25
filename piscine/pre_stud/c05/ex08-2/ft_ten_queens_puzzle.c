@@ -2,69 +2,51 @@
 #include <stdio.h>
 #define SIZE 4
 
-int test = 0;
-int     is_valid(int sol[SIZE][SIZE], int row, int col)
+int     is_diags_valid(int sol[SIZE][SIZE], int col)
 {
-    /*
+    int     i;
+    int     j;  
+
+    i = -1;
+    j = -1;       
+    while (++i < SIZE)
+    {    
+        while (++j <= col)
+            if (sol[i][j] >= 0 && j + 1 <= col &&
+                    (i + 1 < SIZE && sol[i + 1][j + 1] >= 0 ||
+                            i - 1 >= 0 && sol[i - 1][j + 1] >= 0))                        
+                                return (0);
+        j = -1;
+    }            
+    return (1);
+}
+
+int     is_hor_valid(int sol[SIZE][SIZE], int row, int col)
+{   
+    int     n;
+
+    n = 0; 
+    while (col >= 0)
+        if (sol[row][col--] >= 0)            
+            if (++n > 1) 
+                return (0);
+    return (1);
+}
+
+int     is_all_valid(int sol[SIZE][SIZE], int col)
+{       
     int     i;
     int     j;
-
-    i = 0;
-    j = col;
-    while (j-- >= 0)
-    {
-        //printf(".%d\n", j);
-         if (col - i >= 0 && sol[row][col - i] >= 0)
-                                return (1);
-        if (row - (i + 1) >= 0 && col - (i + 1) >= 0 &&
-                sol[row - (i + 1)][col - (i + 1)] >= 0 ||
-                    row + (i + 1) < SIZE && col - (i + 1) >= 0 &&
-                        sol[row + (i + 1)][col - (i + 1)] >= 0)
-                        {
-                           
-                            
-                                return (0);
-                        }
-        i++;
-    }
-    //printf("\n");
-    return (1);
-    */
-   /*
- if (test == 0)
-    {
-        test = 1;
-        return 1;
-    }*/
-  //  int     j;
- // printf("ici:%d:%d\n", row, col);
-   // if (col > 0)  
-   /*   
-    j = col;
-    while (j > 0)
-    {
-      // printf("la:%d:%d\n", row, col);
-        
-        if (sol[row][col] >= 0)
-        { 
-            printf("return 0: %d: %d:%d\n", sol[row][col], row, col);
-            return (0);
-
-        }
-         
-        col--;  
-        j--;    
-    }
-    printf("\n");
-    return (1);
-    */
-    /*
-    if (row == 0)
+ 
+    i = -1;
+    j = -1;   
+    while (++i < SIZE)       
+        if (!is_hor_valid(sol, i, col))
+            return (0);  
+                 
+    if (!is_diags_valid(sol, col))
         return (0);
-    else 
-        return (1);
-    */
-   return (1);
+    return (1);
 }
 
 int stop = 0;
@@ -82,7 +64,7 @@ printf("in\n");
             sol_cp[i][j] = sol[i][j];   // use struct
             j = -1;  
     } 
-    if (is_valid(sol_cp, row, ++col))
+    if (is_all_valid(sol_cp, ++col))
         if (col < SIZE)
         {       
             i = 0;
