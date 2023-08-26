@@ -19,7 +19,7 @@ int     ft_is_diags_valid(mysol sol, int col)
     {    
         while (++j <= col)
         {
-            while (i + ++diag < SIZE || i - diag >= 0 || j + diag <= 0)
+            while (i + ++diag < SIZE || i - diag >= 0 || j + diag <= 0)cd
                 if (sol.sol[i][j] >= 0 && j + diag <= col &&
                         (i + diag < SIZE && sol.sol[i + diag][j + diag] >= 0 ||
                             i - diag >= 0 && sol.sol[i - diag][j + diag] >= 0))                        
