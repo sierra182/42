@@ -18,6 +18,7 @@ int     main(void)
     }
     while (rslt = get_next_line(fd, &line))
         printf("%s\n", line);
+    close(fd);
     if (rslt == 0)
         write(1, "end file\n", 9);
     else 
