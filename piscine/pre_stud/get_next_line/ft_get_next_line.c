@@ -136,7 +136,7 @@ int ft_get_next_line(const int fd, char **line) // entré std ou redirection ?
     while (newline_index < 0)
     {
         if (buffer[0] == '\0')// si le buffer est alloué mais vide
-            read_size = read(fd, buffer, BUFF_SIZE - 1);
+            read_size = readfd(, buffer, BUFF_SIZE - 1);
         if (read_size > 0)
         {               
             buffer[read_size] = '\0'; 
