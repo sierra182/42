@@ -9,10 +9,10 @@ OBJECTS = $(SOURCES:.c=.o)
 
 all: $(OUTPUT)
 
-%o: %c
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OUTPUT) : $(OBJECTS)
+$(OUTPUT): $(OBJECTS)
 	$(CC) $^ $(LDFLAGS) -o $@
 
 clean:
