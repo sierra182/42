@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 11:03:07 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/20 09:18:02 by seblin           ###   ########.fr       */
+/*   Created: 2023/09/20 12:23:32 by seblin            #+#    #+#             */
+/*   Updated: 2023/09/20 12:24:51 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <unistd.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
-
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	write(fd, &c, 1);
 }
+/*
+#include <fcntl.h>
+int main(void)
+{
+	int fd;
+
+	fd = open("./tou.txt", O_WRONLY | O_CREAT , 0777); 
+	ft_putchar_fd('e', fd);
+	return (0);
+}
+*/
