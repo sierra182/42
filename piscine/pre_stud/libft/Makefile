@@ -5,6 +5,7 @@ SOURCES = $(filter-out %_bonus.c, $(wildcard *.c))
 SOURCES_BONUS = ft_lstnew_bonus.c
 OBJECTS = $(SOURCES:.c=.o)
 OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
+
 .PHONY: all clean fclean re bonus
 
 all: $(NAME)
