@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:42:53 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/22 23:16:17 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/23 09:52:55 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-size_t	ft_strlcat(char *dest, const char *src, size_t n);
+size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 int		ft_atoi(const char *nptr);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
