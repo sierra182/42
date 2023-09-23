@@ -6,13 +6,19 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:42:53 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/23 09:52:55 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/23 10:01:54 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;	
+}					t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
