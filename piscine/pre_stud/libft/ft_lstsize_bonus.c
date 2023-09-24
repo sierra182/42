@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:05:29 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/23 17:09:44 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/24 14:44:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_lstsize(t_list *lst)
 	int	i;
 
 	i = 0;
-	while (lst->next)
+	while (lst)
 	{
 		lst = lst->next;
 		i++;
