@@ -6,11 +6,26 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 22:14:36 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/24 22:15:37 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/25 12:14:43 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_lstclear(t_list **lst, void (*del) (void *))
+#include "libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del) (void *)) //** ?
 {
+	t_list	temp;
 	
+	while (*lst)
+	{	
+		temp = *lts->next;	
+		del(*lst->content);
+		free(*lst);
+		*lst = temp; // null ?
+	}
+}
+
+static void	ft_del(void *ptr)
+{
+	free(ptr);
 }
