@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 NAME = libft.a
-SOURCES = $(filter-out %_bonus.c, $(wildcard *.c))
+SOURCES = $(wildcard *.c)
 SOURCES_BONUS = ft_lstnew_bonus.c
 OBJECTS = $(SOURCES:.c=.o)
 OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
