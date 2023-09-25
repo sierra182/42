@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:35:49 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/25 15:06:48 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/25 15:21:53 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (!*lst)
 		*lst = new;
 	else
+	{
 		last_l = ft_lstlast(*lst);
-	//if (last_l)
 		last_l->next = new;
+	}
 }
-
+/*
 int	main(void)
 {
 	
 	return (0);
 }
+*/

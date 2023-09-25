@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:42:53 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/25 14:19:20 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/25 15:32:11 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	ft_lstadd_back(t_list **lst, t_list *n);
 void	ft_lstdelone(t_list *lst, void (*del) (void	*));
 void	ft_lstclear(t_list **lst, void (*del) (void *));
 void	ft_lstiter(t_list *lst, void (*f) (void *));
-t_list	*ft_lstmap(t_list **lst, void *(*f) (void *), void (*del) (void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del) (void *));
 
 #endif
