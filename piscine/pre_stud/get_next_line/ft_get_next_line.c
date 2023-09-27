@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/27 10:39:50 by seblin            #+#    #+#             */
+/*   Updated: 2023/09/27 14:45:46 by seblin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+#include "test_ft_gnl.h"
 #include "ft_get_next_line.h"
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+/*
 void    memcpy(char *line, char *tmp_line)
 {
     while (*line)
@@ -23,7 +37,7 @@ int resize_buffer(char **line, size_t buff_size)
     *line = tmp_line;
     return (0);    
 }
-
+*/
 /*
 ** verif si buffer null ?
 ** mesurer taille buffer
@@ -36,6 +50,7 @@ int resize_buffer(char **line, size_t buff_size)
 ** affecter le nouveau buffer au pointeur buffer 
 ** return 0 si ok sinon 1
 */
+/*
 int    ft_expand_buffer(char **buffer) 
 {
     char    *new_buffer;
@@ -84,6 +99,7 @@ int ft_save_remainingline(char **buffer, int newline_index)
     *buffer = new_buffer; 
     return (0);
 }
+*/
 
 int ft_extract_firstline(char *buffer, char **line, int newline_index) //buffer null ?
 {
@@ -95,11 +111,11 @@ int ft_extract_firstline(char *buffer, char **line, int newline_index) //buffer 
     if (!*line)
     {
         write(1, "error buffer allocation", 24);
-        return (-1);        
+        return (1);        
     }
-    i = 0;
-    while (i < newline_index)
-        (*line)[i] = buffer[i++];
+    i = -1;
+    while (++i < newline_index)	
+        (*line)[i] = buffer[i];	
     (*line)[i] = '\0';
     return (0);   
 }
@@ -114,7 +130,7 @@ int ft_search_newline_index(char *buffer)
             return (i);               
     return (-1);
 }
-
+/*
 int ft_get_next_line(const int fd, char **line) // entré std ou redirection ?
 {
     static char *buffer;
@@ -164,8 +180,7 @@ int ft_get_next_line(const int fd, char **line) // entré std ou redirection ?
     if (read_size < 0)
         return (-1);
     else if (read_size == 0) // send remain ?
-        return (0);     
-  
+        return (0);       
  // 0 plus de ligne, 1 une ligne lue, -1 erreur
 }
 
@@ -175,24 +190,5 @@ void    ft_putstr(char *str)
         write(1, str++, 1);
 }
 
-int main (void)
-{
-    char    *path;
-    char    *line;
-    int fd;
-    int gnl_rslt;
+*/
 
-    line = NULL;
-    path = "test.txt"; 
-    fd = open(path, O_RDONLY);  
-    gnl_rslt = 1; 
-    while (gnl_rslt)
-    {
-        gnl_rslt = ft_get_next_line(fd, &line);
-        if (gnl_rslt < 0)
-            return (1);
-        ft_putstr(line);
-    }
-    free(line);
-    return (0);
-}

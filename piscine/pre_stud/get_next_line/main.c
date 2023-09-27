@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "ft_get_next_line.h"
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -28,3 +28,27 @@ int     main(void)
     }
     return (0);
 }
+
+/*
+int main (void)
+{
+    char    *path;
+    char    *line;
+    int fd;
+    int gnl_rslt;
+
+    line = NULL;
+    path = "test.txt"; 
+    fd = open(path, O_RDONLY);  
+    gnl_rslt = 1; 
+    while (gnl_rslt)
+    {
+        gnl_rslt = ft_get_next_line(fd, &line);
+        if (gnl_rslt < 0)
+            return (1);
+        ft_putstr(line);
+    	free(line);
+    }
+	return (0);
+}
+*/
