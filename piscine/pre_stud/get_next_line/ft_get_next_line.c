@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:39:50 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/27 15:47:53 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/28 17:17:39 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int ft_extract_firstline(char *buffer, char **line, int newline_index) //buffer 
     return (0);   
 }
 
-int ft_search_newline_index(char *buffer)
+int ft_search_i_newline(char *buffer)
 {
     int i;
 
@@ -124,6 +124,35 @@ int ft_search_newline_index(char *buffer)
             return (i);               
     return (-1);
 }
+
+int	ft_get_next_line(const int fd, char **line)
+{
+	static char	*buffer;
+	ssize_t 	read_size;
+	int			i_newline;
+	
+	if (!buffer)
+		buffer = (char *) malloc (sizeof (char) * BUFF_SIZE);
+	if (!buffer)
+		return (-1);
+	i_newline = -1;
+	while (i_newline < 0)
+	{		
+		read_size = read(fd, buffer, BUFF_SIZE - 1); 
+		if (read_size > 0)
+		{
+			buffer[read_size] = '\0';
+			i_newline = ft_search_i_newline(buffer);//printf("i:%d\n", i_newline);
+		}
+		else if (read_size == 0)
+			return (0);
+		else 
+			return (-1);
+	}
+	*line = ft_strndup(buffer, i_newline);
+	return (1);
+}
+
 /*
 int ft_get_next_line(const int fd, char **line) // entré std ou redirection ?
 {
@@ -178,4 +207,3 @@ int ft_get_next_line(const int fd, char **line) // entré std ou redirection ?
  // 0 plus de ligne, 1 une ligne lue, -1 erreur
 }
 */
-
