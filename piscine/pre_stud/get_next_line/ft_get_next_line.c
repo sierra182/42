@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:39:50 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/27 14:45:46 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/27 15:47:53 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,8 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-/*
-void    memcpy(char *line, char *tmp_line)
-{
-    while (*line)
-        *tmp_line++ = *line++;
-    *tmp_line = '\0';    
-}
 
+/*
 int resize_buffer(char **line, size_t buff_size)
 {
     char    *tmp_line;
@@ -101,7 +95,7 @@ int ft_save_remainingline(char **buffer, int newline_index)
 }
 */
 
-int ft_extract_firstline(char *buffer, char **line, int newline_index) //buffer null ?
+int ft_extract_firstline(char *buffer, char **line, int newline_index) //buffer null ? strndup!!
 {
     int i;
 
@@ -152,7 +146,7 @@ int ft_get_next_line(const int fd, char **line) // entré std ou redirection ?
     while (newline_index < 0)
     {
         if (buffer[0] == '\0')// si le buffer est alloué mais vide
-            read_size = readfd(, buffer, BUFF_SIZE - 1);
+            read_size = read(fd, buffer, BUFF_SIZE - 1);
         if (read_size > 0)
         {               
             buffer[read_size] = '\0'; 
@@ -183,12 +177,5 @@ int ft_get_next_line(const int fd, char **line) // entré std ou redirection ?
         return (0);       
  // 0 plus de ligne, 1 une ligne lue, -1 erreur
 }
-
-void    ft_putstr(char *str)
-{
-    while (*str)
-        write(1, str++, 1);
-}
-
 */
 

@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:39:45 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/27 14:52:04 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/27 14:53:06 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void	test_extract_firstline(void)
 	int		newl_i[] = {
 							2,
 							16, 							
-						};
-						
+						};						
 	line = NULL;
 	buf = buffer;
 	newl = newl_i;
