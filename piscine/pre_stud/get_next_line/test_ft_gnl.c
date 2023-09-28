@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:39:45 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/28 17:29:39 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/28 19:16:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ void	test_extract_firstline(void)
 
 int	test_gnl(void)
 {	
-    char    *file_path;
-    char    *line;
-    int fd;
-    int rslt;
+    char	*file_path;
+    char	*line;
+    int		fd;
+    int		rslt;
+	int		i;
 	
 	printf("gnl\n\n");
 	rslt = 1;
@@ -79,19 +80,20 @@ int	test_gnl(void)
         write(1, "error file\n", 11);
         return (1);
     }
+	i = 0;
     while (rslt > 0)
 	{
 		rslt = ft_get_next_line(fd, &line);
 		if (rslt > 0)
 		{
-    		printf("%s\n", line);
+    		printf("res:%s\n", line);
 			free(line);			
 		}			
 	}		
     close(fd);
     if (rslt == 0)
         write(1, "end file\n", 9);
-    else 
+    else if (rslt == -1)
     {
         write(1, "error line\n", 10);
         return (1);

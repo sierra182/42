@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:39:50 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/28 17:17:39 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/28 21:57:33 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,25 +131,40 @@ int	ft_get_next_line(const int fd, char **line)
 	ssize_t 	read_size;
 	int			i_newline;
 	
+	printf("in gnl\n");
 	if (!buffer)
-		buffer = (char *) malloc (sizeof (char) * BUFF_SIZE);
-	if (!buffer)
-		return (-1);
-	i_newline = -1;
-	while (i_newline < 0)
 	{		
-		read_size = read(fd, buffer, BUFF_SIZE - 1); 
+		buffer = (char *) malloc (sizeof (char) * BUFF_SIZE);
+		if (!buffer)
+			return (-1);	
+	}
+	i_newline = -1;
+	i_newline = ft_search_i_newline(buffer);
+	while (i_newline < 0)
+	{	printf("while\n");
+		read_size = read(fd, buffer, BUFF_SIZE - 1); 		
 		if (read_size > 0)
 		{
-			buffer[read_size] = '\0';
+			//buffer[read_size] = '\0';
 			i_newline = ft_search_i_newline(buffer);//printf("i:%d\n", i_newline);
+			//buffer = ft_realloc(start_buffer, ft_strlen(start_buffer) * 2);
 		}
 		else if (read_size == 0)
+		{			
+			if (*buffer) 
+			{
+				*line = ft_strdup(buffer);
+				*buffer = '\0';
+				return (1);	
+			}
+			//free(buffer); !! 
 			return (0);
+		}
 		else 
 			return (-1);
-	}
+	}printf("af\n");
 	*line = ft_strndup(buffer, i_newline);
+	buffer += i_newline + 1;
 	return (1);
 }
 
