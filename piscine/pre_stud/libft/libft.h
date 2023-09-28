@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:42:53 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/27 18:31:07 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/28 12:41:50 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ void	ft_lstdelone(t_list *lst, void (*del) (void	*));
 void	ft_lstclear(t_list **lst, void (*del) (void *));
 void	ft_lstiter(t_list *lst, void (*f) (void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del) (void *));
+
+void	*ft_realloc(void *ptr, size_t size);
 
 #endif
