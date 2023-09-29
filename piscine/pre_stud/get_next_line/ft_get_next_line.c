@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:39:50 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/29 18:07:51 by seblin           ###   ########.fr       */
+/*   Updated: 2023/09/29 22:38:36 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int	ft_get_next_line(const int fd, char **line)
 			return (-1);	
 	}
 	i_newline = -1;
-	i_newline = ft_search_i_newline(buffer); printf("i:%d, %s", i_newline, buffer);
+	i_newline = ft_search_i_newline(buffer); //printf("i:%d\n", i_newline);
 	while (i_newline < 0)
 	{	//printf("while\n");
 		char	*temp = ft_strdup(buffer);
@@ -149,14 +149,14 @@ int	ft_get_next_line(const int fd, char **line)
 		{
 			buffer[read_size] = '\0';
 			buffer = ft_strjoin(temp, buffer); // free temp & buffer
-			i_newline = ft_search_i_newline(buffer);//printf("i:%d\n", i_newline);
+			i_newline = ft_search_i_newline(buffer);//printf("iffff:%d\n", i_newline);
 		}
 		else if (read_size == 0)
 		{			
 			if (*buffer) 
 			{
 				*line = ft_strdup(buffer);
-				*buffer = '\0';			
+				*buffer = '\0';	
 				return (1);	
 			}
 			free(buffer); 
@@ -166,7 +166,7 @@ int	ft_get_next_line(const int fd, char **line)
 			return (-1);
 	}//printf("af\n");
 	*line = ft_strndup(buffer, i_newline);	
-	ft_memmove(buffer, buffer + i_newline + 1, ft_strlen(buffer + i_newline + 1) + 1);	
+	ft_memmove(buffer, buffer + i_newline + 1, ft_strlen(buffer + i_newline + 1) + 1);		
 	return (1);
 }
 
