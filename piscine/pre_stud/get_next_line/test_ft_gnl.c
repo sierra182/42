@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:39:45 by seblin            #+#    #+#             */
-/*   Updated: 2023/09/28 21:59:09 by seblin           ###   ########.fr       */
+/*   Updated: 2023/10/01 16:15:54 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	test_gnl(void)
 	}		
     close(fd);
     if (rslt == 0)
-        write(1, "end file\n", 9);
+    	printf("end file\n");
     else if (rslt == -1)
     {
         write(1, "error line\n", 10);
@@ -104,7 +104,7 @@ int	test_gnl(void)
 int main (void)
 { 
 	//test_extract_firstline();
-	test_search_i_newline();
+	//test_search_i_newline();
 	test_gnl();	
 	return (0);
 }
