@@ -6,7 +6,7 @@
 /*   By: seblin <seblin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:00:30 by svidot            #+#    #+#             */
-/*   Updated: 2023/10/12 07:47:36 by seblin           ###   ########.fr       */
+/*   Updated: 2023/10/12 20:11:07 by seblin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char c_uc;
-	int	i;
+	unsigned char	c_uc;
+	int				i;
 
 	c_uc = (unsigned char) c;
 	i = 0;
